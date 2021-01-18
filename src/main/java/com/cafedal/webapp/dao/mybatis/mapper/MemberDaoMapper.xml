@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="com.cafedal.webapp.dao.MemberDao">
+  <insert id="insert" parameterType="com.cafedal.webapp.entity.Member">
+	insert into member(id, name, pwd, mail, birth, role, cafes)
+	values(#{id}, #{name}, #{pwd}, #{mail}, #{birth}, "ROLE_USER", #{cafes})
+  </insert>
+  
+  <insert id="MemberInsert" parameterType="com.cafedal.webapp.entity.Member">
+  	insert into member(id, name, pwd, mail, birth, role, cafes)
+	values(#{id}, #{name}, #{pwd}, #{mail}, #{birth}, "ROLE_USER", #{cafes})
+  </insert>
+  
+  <select id="Login" resultType="com.cafedal.webapp.entity.Member">
+  	select id, pwd from member where id=#{id} and pwd=#{pwd}
+  </select>
+  
+  <select id="get" resultType="com.cafedal.webapp.entity.Member">
+  	select id from member where id=#{id}
+  </select>
+  
+  <select id="sameCheckId" parameterType="com.cafedal.webapp.entity.Member" resultType="Integer">
+  	select count(*) from member where id=#{id}
+  </select>
+  
+  <select id="checkPw" resultType="com.cafedal.webapp.entity.Member">
+  	select count(*) from member where id=#{id} and pwd=#{pwd}
+  </select>
+  
+  <update id="update" parameterType="com.cafedal.webapp.entity.Member">
+  	update member set pwd=#{pwd}, name=#{name}, mail=#{mail}, cafes=#{cafes} where id=#{id}
+  </update>
+  
+  <select id="getUseList" resultType="com.cafedal.webapp.entity.Member">
+      select id,pwd,name,mail,birth from member where id=#{id}
+  </select>
+   
+  <select id="getc" resultType="com.cafedal.webapp.entity.Member">
+       select id, pwd, name, mail, birth from member where id=#{id}
+  </select>
+  
+  <select id="getib" resultType="com.cafedal.webapp.entity.Member">
+       select id, birth from member where id=#{id}
+  </select>
+  
+  <select id="getUseListRole" resultType="com.cafedal.webapp.entity.Member">
+       select id,pwd,name,mail,birth,cafes from member
+       where ${param2} like '%${param3}%' and role='ROLE_USER'
+  	   order by id asc
+  	   limit ${(param1-1)*10}, 10
+  </select>
+  
+  <select id="getId"   resultType="com.cafedal.webapp.entity.Member">
+  	   select * from member where name='${param1}' and mail='${param2}'
+  </select>
+  
+  <select id="getPwd"   resultType="com.cafedal.webapp.entity.Member">
+  	   select * from member where id='${param1}'and name='${param2}'and mail='${param3}'
+  </select>
+  
+  <select id="getUseListRole2" resultType="com.cafedal.webapp.entity.Member">
+       select id,pwd,name,mail,birth,cafes from member
+       where id=#{id} 
+  </select>
+  
+  <delete id="delete" parameterType="com.cafedal.webapp.entity.Member">
+	       delete from member where id=#{id}
+  </delete>
+</mapper>
