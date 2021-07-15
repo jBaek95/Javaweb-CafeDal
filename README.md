@@ -9,6 +9,22 @@
    + 카페 별 고정 할인 정보 제공
    + 오늘의 카페 : 개인 카페 추천 기능
    + ABOUT US : 사이트 소개
+   + 로그인 및 회원가입 관련
+   + 고객 마이페이지
+   + 관리자 페이지
    
   ### 개발 환경
+  + 사용 OS : Window10
+  + Data Base : MySQL workbench 6.3 CE
+  + IDE : Eclipse
+  + Java
+  + Spring
+  + Maven
+  + Apache Tomcat ver 9.0
+
+ ### 개발 버전 
+![image](https://user-images.githubusercontent.com/75718761/125784628-af9f3d71-0057-4150-8579-17e77b85ca65.png)
+
+
+
   
